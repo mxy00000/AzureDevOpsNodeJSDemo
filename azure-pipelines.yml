@@ -69,3 +69,4 @@ stages:
         Contents: '*.yml'
         TargetFolder: '$(build.artifactstagingdirectory)/content-api/yaml'
         
+    
