@@ -54,3 +54,18 @@ stages:
         repository: content-web
         tags: |
           $(contentwebimagetag)
+
+    - task: CopyFiles@2
+      displayName: copy content-web deployment yaml 
+      inputs:
+        SourceFolder: content-web/yaml
+        Contents: '*.yml'
+        TargetFolder: '$(build.artifactstagingdirectory)/content-web/yaml'
+    
+    - task: CopyFiles@2
+      displayName: copy content-api deployment yaml 
+      inputs:
+        SourceFolder: content-api/yaml
+        Contents: '*.yml'
+        TargetFolder: '$(build.artifactstagingdirectory)/content-api/yaml'
+        
