@@ -34,3 +34,23 @@ stages:
         repository: content-api
         tags: |
           $(contentapiimagetag)
+
+    - task: Docker@2
+      displayName: build content-init image and push to ACR
+      inputs:
+        command: buildAndPush
+        dockerfile: '$(Build.SourcesDirectory)/content-init/Dockerfile'
+        containerRegistry: ACR
+        repository: content-init
+        tags: |
+          $(contentinitimagetag)
+
+    - task: Docker@2
+      displayName: build content-web image and push to ACR
+      inputs:
+        command: buildAndPush
+        dockerfile: '$(Build.SourcesDirectory)/content-web/Dockerfile'
+        containerRegistry: ACR
+        repository: content-web
+        tags: |
+          $(contentwebimagetag)
