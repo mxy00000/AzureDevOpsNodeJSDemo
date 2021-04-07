@@ -49,8 +49,6 @@ spec:
           terminationMessagePolicy: File
         dnsPolicy: ClusterFirst
         restartPolicy: Always
-        imagePullSecret:
-        - name: imagepullsecret
         schedulerName: default-scheduler
         securityContext: {}
         terminationGracePeriodSeconds: 30
