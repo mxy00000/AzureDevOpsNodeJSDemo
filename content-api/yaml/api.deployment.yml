@@ -4,7 +4,6 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "2"
   name: api
-  namespace: default
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -25,8 +24,8 @@ spec:
       name: api
     spec:
       containers:
-      - image: mxy00000/content-api:v1.0
-        imagePullPolicy: IfNotPresent
+      - image: mxyacr.azurecr.cn/content-api:fordevops
+        imagePullPolicy: Always
         name: api
         resources:
           requests:
@@ -42,6 +41,8 @@ spec:
               key: db
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
+      imagePullSecrets: 
+      - name: imagepullsecret
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
